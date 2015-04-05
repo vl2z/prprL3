@@ -1,22 +1,26 @@
 import java.util.regex.Matcher ; 
-import java.util.regex.Pattern ; 
-         
-public class Main {
-         
-           public static void main(String[] args){ 
-               System.out.println("Results of checking:") ; 
-               System.out.println(checkWithRegExp("_@BEST")) ; 
-               System.out.println(checkWithRegExp("vovano")) ; 
-               System.out.println(checkWithRegExp("vo")) ; 
-               System.out.println(checkWithRegExp("Z@OZA")) ; 
-               System.out.println(checkWithRegExp("HELLO")) ; 
-               System.out.println(checkWithRegExp("123")) ;
-               System.out.println(checkWithRegExp("12345")) ;
-           }
-         
-           public static boolean checkWithRegExp(String userNameString){ 
-               Pattern p = Pattern.compile("^[a­z0­9_­]{3,15}$") ; 
-               Matcher m = p.matcher(userNameString) ; 
-               return m.matches() ; 
-           } 
-        }
+import java.util.regex.Pattern ;
+
+import java.io.*;
+
+public class Main{
+    public static void main(String[] args) throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        File f = new File("F:/text.txt");
+        BufferedReader fin = new BufferedReader(new FileReader(f));
+        String name;
+        String line;
+        System.out.println("Print File "+f.getName()+"? y/n");
+        name = br.readLine();
+        if(name.equals("y"))
+            while ((line = fin.readLine()) != null) {
+                System.out.println(line);
+                System.out.println(checkWithRegExp(line));
+            }
+    }
+    public static boolean checkWithRegExp(String userNameString){
+        Pattern p = Pattern.compile("bad\\s|worse[\\t\\n\\x0B\\f\\r]|worst\\s|die\\s", Pattern.CASE_INSENSITIVE) ;
+        Matcher m = p.matcher(userNameString);
+        return m.find() ;
+    }
+}
