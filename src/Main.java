@@ -35,7 +35,7 @@ public class Main{
         }
     }
     public static boolean checkWithRegExp(String userNameString){
-        Pattern p = Pattern.compile("bad\\s|worse[\\t\\n\\x0B\\f\\r]|worst\\s|die\\s", Pattern.CASE_INSENSITIVE) ;
+        Pattern p = Pattern.compile("bad\\s|worse\\s|worst\\s|\\sdie[a-z]*|\\ssuffer[a-z]*|mad\\s|crazy\\s|\\snightmare[a-z]*|\\sdeath[a-z]*|\\sfear[a-z]*", Pattern.CASE_INSENSITIVE) ;
         Matcher m = p.matcher(userNameString);
         return m.find() ;
     }
