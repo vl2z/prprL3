@@ -16,8 +16,12 @@ public class Main{
         if(name.equals("y"))
             while ((line = fin.readLine()) != null) {
                 System.out.println(line);
-
             }
+    }
+    public static boolean checkWithRegExp(String userNameString){
+        Pattern p = Pattern.compile("bad\\s|worse[\\t\\n\\x0B\\f\\r]|worst\\s|die\\s") ;
+        Matcher m = p.matcher(userNameString);
+        return m.find() ;
     }
 
 }
