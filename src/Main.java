@@ -10,7 +10,8 @@ public class Main {
                System.out.println(checkWithRegExp("vo")) ; 
                System.out.println(checkWithRegExp("Z@OZA")) ; 
                System.out.println(checkWithRegExp("HELLO")) ; 
-               System.out.println(checkWithRegExp("123")) ; 
+               System.out.println(checkWithRegExp("123")) ;
+               System.out.println(checkWithRegExp("12345")) ;
            }
          
            public static boolean checkWithRegExp(String userNameString){ 
