@@ -9,17 +9,33 @@ public class Main{
         File f = new File("F:/text.txt");
         BufferedReader fin = new BufferedReader(new FileReader(f));
         String name;
+        String fl;
         String line;
-        int quantity;
-        System.out.println("Print File "+f.getName()+"? y/n");
+        int quantity=0;
+        System.out.println("Search in File "+f.getName()+"? y/n");
         name = br.readLine();
-        if(name.equals("y"))
-            while ((line = fin.readLine()) != null) {
-                System.out.println(line);
-            }
+        if(name.equals("y")) {
+            System.out.println("Search with full output? y/n");
+            fl = br.readLine();
+            if (fl.equals("y"))
+                while ((line = fin.readLine()) != null) {
+                    System.out.println(line);
+                    if (checkWithRegExp(line)) {
+                        System.out.println("\t\t TRUE");
+                        quantity++;
+                    }
+                }
+            else
+                while ((line = fin.readLine()) != null) {
+                    if (checkWithRegExp(line)) {
+                        quantity++;
+                    }
+                }
+                System.out.println("All negative hits (\"text mood\") = -"+quantity);
+        }
     }
     public static boolean checkWithRegExp(String userNameString){
-        Pattern p = Pattern.compile("bad\\s|worse[\\t\\n\\x0B\\f\\r]|worst\\s|die\\s") ;
+        Pattern p = Pattern.compile("bad\\s|worse[\\t\\n\\x0B\\f\\r]|worst\\s|die\\s", Pattern.CASE_INSENSITIVE) ;
         Matcher m = p.matcher(userNameString);
         return m.find() ;
     }
