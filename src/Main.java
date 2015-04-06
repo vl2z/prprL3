@@ -2,12 +2,25 @@ import java.util.regex.Matcher ;
 import java.util.regex.Pattern ;
 
 import java.io.*;
+//http://www.enchantedlearning.com/wordlist/negativewords.shtml
 
 public class Main{
     static  Pattern[] pAr = new Pattern[] {
             Pattern.compile("bad\\s", Pattern.CASE_INSENSITIVE),
-            Pattern.compile("\\sdie[a-z]*"),
-
+            Pattern.compile("\\sdie[a-z]*", Pattern.CASE_INSENSITIVE),
+            Pattern.compile("worse\\s", Pattern.CASE_INSENSITIVE),
+            Pattern.compile("worst\\s", Pattern.CASE_INSENSITIVE),
+            Pattern.compile("\\ssuffer[a-z]*", Pattern.CASE_INSENSITIVE),
+            Pattern.compile("mad\\s", Pattern.CASE_INSENSITIVE),
+            Pattern.compile("crazy\\s", Pattern.CASE_INSENSITIVE),
+            Pattern.compile("\\snightmare[a-z]*", Pattern.CASE_INSENSITIVE),
+            Pattern.compile("\\sdeath[a-z]*", Pattern.CASE_INSENSITIVE),
+            Pattern.compile("\\sfear[a-z]*", Pattern.CASE_INSENSITIVE),
+            Pattern.compile("\\sfuck[a-z]*", Pattern.CASE_INSENSITIVE),
+            Pattern.compile("\\sshit[a-z]*", Pattern.CASE_INSENSITIVE),
+            Pattern.compile("\\skill[a-z]*", Pattern.CASE_INSENSITIVE),
+            Pattern.compile("\\shurt[a-z]*", Pattern.CASE_INSENSITIVE),
+            Pattern.compile("\\swreck[a-z]*", Pattern.CASE_INSENSITIVE),
     };
     static int full=0;
     public static void main(String[] args) throws IOException{
@@ -34,23 +47,14 @@ public class Main{
                 System.out.println("All negative hits (\"text mood\") = -"+full);
         }
     }
-    /*public static boolean checkWithRegExp(String userNameString){
-        Pattern p = Pattern.compile("bad\\s|worse\\s|worst\\s|\\sdie[a-z]*|\\ssuffer[a-z]*|mad\\s|crazy\\s|\\snightmare[a-z]*|\\sdeath[a-z]*|\\sfear[a-z]*", Pattern.CASE_INSENSITIVE) ;
-        Matcher m = p.matcher(userNameString);
-        return m.find() ;
-    }*/
     public static void checkWithRegExp(String userNameString){
         Matcher m=null;
-        boolean b=false;
         for (int j=0; j<pAr.length; j++) {
             m = pAr[j].matcher(userNameString);
             if (m.find()) {
                 full++;
                 System.out.println("\t\t Hit with: " +pAr[j]+" pattern");
-                b=true;
             }
-            else
-                b=false;
         }
     }
 
