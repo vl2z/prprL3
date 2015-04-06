@@ -48,12 +48,12 @@ public class Main{
         }
     }
     public static void checkWithRegExp(String userNameString){
-        Matcher m=null;
-        for (int j=0; j<pAr.length; j++) {
-            m = pAr[j].matcher(userNameString);
+        Matcher m;
+        for(Pattern p:pAr){
+            m = p.matcher(userNameString);
             if (m.find()) {
                 full++;
-                System.out.println("\t\t Hit with: " +pAr[j]+" pattern");
+                System.out.println("\t\t Hit with: " +p+" pattern");
             }
         }
     }
